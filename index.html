@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fake Investment App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>💸 Investment Dashboard</h1>
+    <p>Balance: $<span id="balance">0</span></p>
+
+    <button onclick="showAddFunds()">Add Funds</button>
+    <button onclick="showWithdraw()">Withdraw</button>
+
+    <div id="addFundsSection" class="hidden">
+      <p>Send money to this fake account:</p>
+      <p><strong>Account Number:</strong> 1234567890</p>
+      <button onclick="simulateFund()">I have sent it</button>
+    </div>
+
+    <div id="withdrawSection" class="hidden">
+      <p>Enter your Nigerian account number:</p>
+      <input type="text" id="acctNum" placeholder="1234567890" />
+      <button onclick="processWithdraw()">Withdraw $</button>
+      <p id="withdrawResult"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
