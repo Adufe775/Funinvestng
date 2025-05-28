@@ -1,88 +1,24 @@
-<!DOCTYPE html><html lang="en">
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DailyGrow - Sign Up</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>DailyGrow Sign Up</title>
+  <script defer src="script.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100">
-  <!-- Sign Up Page -->
-  <div id="signupPage" class="min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white p-6 rounded-xl shadow-md w-full max-w-md">
-      <h2 class="text-2xl font-bold mb-4 text-center text-blue-700">DailyGrow Sign Up</h2>
-      <input type="text" placeholder="Enter your Mobile number" class="w-full mb-3 p-2 border rounded" id="mobile" />
-      <div class="flex justify-between items-center mb-3">
-        <input type="text" placeholder="Enter Captcha" class="w-2/3 p-2 border rounded" id="captchaInput" />
-        <div class="bg-gray-200 text-xl font-bold px-4 py-2 rounded rotate-[-10deg]">8130</div>
-      </div>
-      <input type="password" placeholder="Password (≥6 characters)" class="w-full mb-4 p-2 border rounded" id="password" />
-      <button onclick="signUp()" class="w-full bg-blue-600 text-white py-2 rounded">Sign Up</button>
-      <p class="text-center mt-4 text-sm">I already have an account. <a href="#" class="text-blue-600">Login</a></p>
+<body class="flex justify-center items-center h-screen bg-gray-100">
+  <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+    <h1 class="text-2xl font-bold text-center text-blue-600 mb-6">DailyGrow Sign Up</h1>
+    <input id="phone" type="text" placeholder="Mobile number" class="w-full p-2 border mb-3 rounded" />
+    <div class="flex mb-3 items-center">
+      <input id="captcha" type="text" placeholder="Enter captcha" class="w-2/3 p-2 border rounded" />
+      <div class="w-1/3 text-center text-white font-bold ml-2 bg-gray-300 p-2 rounded">8130</div>
     </div>
-  </div>  <!-- Dashboard Page -->  <div id="dashboardPage" class="hidden p-4">
-    <div class="bg-blue-900 text-white p-4 rounded-xl mb-4">
-      <p class="text-sm">ID <span id="userId">0000000000</span></p>
-      <div class="flex justify-between mt-2">
-        <div class="bg-blue-800 p-3 rounded-lg w-[48%] text-center">
-          <p>Balance</p>
-          <p class="text-xl font-bold">₦<span id="balance">0</span></p>
-        </div>
-        <div class="bg-blue-800 p-3 rounded-lg w-[48%] text-center">
-          <p>Order</p>
-          <p class="text-xl font-bold">₦0</p>
-        </div>
-      </div>
-    </div><!-- Banner -->
-<div class="mb-4">
-  <img src="https://via.placeholder.com/300x100?text=DailyGrow+Banner" class="rounded-lg w-full" alt="Banner" />
-</div>
-
-<!-- Project List -->
-<h3 class="text-lg font-semibold mb-2">Investment Projects</h3>
-<div class="grid grid-cols-2 gap-4">
-  <div class="bg-white rounded-lg shadow p-2">
-    <img src="https://via.placeholder.com/150" class="rounded mb-2" alt="Project 1" />
-    <p class="font-bold text-blue-600">2700%</p>
-    <p class="text-sm">Serving Days: 90</p>
-    <p class="text-sm">Price: ₦1000</p>
+    <input id="password" type="password" placeholder="Password" class="w-full p-2 border mb-4 rounded" />
+    <button id="signupBtn" class="w-full bg-blue-600 text-white py-2 rounded">Sign Up</button>
+    <p class="mt-4 text-center text-sm">I already have an account. <a href="#" class="text-blue-600">Login</a></p>
   </div>
-  <div class="bg-white rounded-lg shadow p-2">
-    <img src="https://via.placeholder.com/150" class="rounded mb-2" alt="Project 2" />
-    <p class="font-bold text-blue-600">2880%</p>
-    <p class="text-sm">Serving Days: 90</p>
-    <p class="text-sm">Price: ₦1000</p>
-  </div>
-</div>
-
-<!-- Bottom Nav -->
-<div class="fixed bottom-0 left-0 right-0 bg-white shadow flex justify-around py-2">
-  <button class="text-blue-600">Home</button>
-  <button>About us</button>
-  <button>Order</button>
-  <button>Me</button>
-</div>
-
-  </div>  <script>
-    function signUp() {
-      const mobile = document.getElementById('mobile').value;
-      const captcha = document.getElementById('captchaInput').value;
-      const password = document.getElementById('password').value;
-
-      if (!mobile || !captcha || !password || password.length < 6) {
-        alert('Please fill in all fields correctly.');
-        return;
-      }
-
-      if (captcha !== '8130') {
-        alert('Incorrect captcha.');
-        return;
-      }
-
-      document.getElementById('signupPage').classList.add('hidden');
-      document.getElementById('dashboardPage').classList.remove('hidden');
-
-      document.getElementById('userId').innerText = Math.floor(Math.random() * 10000000000);
-      document.getElementById('balance').innerText = 300;
-    }
-  </script></body>
+</body>
 </html>
