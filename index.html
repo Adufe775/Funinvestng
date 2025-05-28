@@ -1,33 +1,142 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fake Investment App</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DailyGrow</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #ff6b00;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 1rem;
+    }
+    .section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .section h2 {
+      margin-top: 0;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .project {
+      background: #f1f1f1;
+      border-radius: 8px;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .project img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .btn {
+      background-color: #ff6b00;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    .btn:hover {
+      background-color: #e55b00;
+    }
+    .balance, .notifications {
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>DailyGrow</h1>
+    <p>Grow Your Investment Daily 🚀</p>
+  </header>
   <div class="container">
-    <h1>💸 Investment Dashboard</h1>
-    <p>Balance: $<span id="balance">0</span></p>
-
-    <button onclick="showAddFunds()">Add Funds</button>
-    <button onclick="showWithdraw()">Withdraw</button>
-
-    <div id="addFundsSection" class="hidden">
-      <p>Send money to this fake account:</p>
-      <p><strong>Account Number:</strong> 1234567890</p>
-      <button onclick="simulateFund()">I have sent it</button>
+    <div class="section">
+      <h2>Dashboard</h2>
+      <p>Balance: <span class="balance">$0</span></p>
+      <p>🔔 Notifications: <span class="notifications">None yet</span></p>
     </div>
-
-    <div id="withdrawSection" class="hidden">
-      <p>Enter your Nigerian account number:</p>
-      <input type="text" id="acctNum" placeholder="1234567890" />
-      <button onclick="processWithdraw()">Withdraw $</button>
-      <p id="withdrawResult"></p>
+    <div class="section">
+      <h2>Available Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <img src="https://source.unsplash.com/200x120/?money" alt="Mini Recharge Boost" />
+          <h3>Mini Recharge Boost</h3>
+          <p>$5 → $15 in 10 days</p>
+          <button class="btn" onclick="invest(5, 15, 10)">Invest</button>
+        </div>
+        <div class="project">
+          <img src="https://source.unsplash.com/200x120/?books" alt="Book Seller Starter" />
+          <h3>Book Seller Starter</h3>
+          <p>$20 → $60 in 10 days</p>
+          <button class="btn" onclick="invest(20, 60, 10)">Invest</button>
+        </div>
+        <div class="project">
+          <img src="https://source.unsplash.com/200x120/?house" alt="Real Estate Rise" />
+          <h3>Real Estate Rise</h3>
+          <p>$500 → $2500 in 30 days</p>
+          <button class="btn" onclick="invest(500, 2500, 30)">Invest</button>
+        </div>
+        <div class="project">
+          <img src="https://source.unsplash.com/200x120/?car" alt="Luxury Car Lease" />
+          <h3>Luxury Car Lease</h3>
+          <p>$1000 → $5000 in 30 days</p>
+          <button class="btn" onclick="invest(1000, 5000, 30)">Invest</button>
+        </div>
+        <div class="project">
+          <img src="https://source.unsplash.com/200x120/?gold" alt="Gold Vault Project" />
+          <h3>Gold Vault Project</h3>
+          <p>$5000 → $25000 in 30 days</p>
+          <button class="btn" onclick="invest(5000, 25000, 30)">Invest</button>
+        </div>
+      </div>
     </div>
-  </div>
+  </div>  <script>
+    let balance = 0;
+    let notifications = [];
 
-  <script src="script.js"></script>
-</body>
+    function updateDashboard() {
+      document.querySelector(".balance").textContent = `$${balance}`;
+      document.querySelector(".notifications").textContent = notifications.length > 0 ? notifications.join(", ") : "None yet";
+    }
+
+    function invest(start, end, days) {
+      const dailyIncrease = (end - start) / days;
+      balance -= start;
+      notifications.push(`Invested $${start}`);
+      updateDashboard();
+
+      let day = 0;
+      const interval = setInterval(() => {
+        day++;
+        balance += dailyIncrease;
+        updateDashboard();
+        if (day >= days) {
+          clearInterval(interval);
+          notifications.push(`Project completed: Earned $${end}`);
+          updateDashboard();
+        }
+      }, 1000); // 1 second = 1 day (for demo)
+    }
+
+    updateDashboard();
+  </script></body>
 </html>
