@@ -1,30 +1,27 @@
-let balance = 0;
+// script.js
+document.addEventListener("DOMContentLoaded", () => {
+  const signupBtn = document.getElementById("signupBtn");
 
-function showAddFunds() {
-  document.getElementById("addFundsSection").classList.toggle("hidden");
-}
+  signupBtn.addEventListener("click", () => {
+    const phone = document.getElementById("phone").value;
+    const captcha = document.getElementById("captcha").value;
+    const password = document.getElementById("password").value;
 
-function showWithdraw() {
-  document.getElementById("withdrawSection").classList.toggle("hidden");
-}
+    if (!phone || !captcha || !password) {
+      alert("Please fill all fields.");
+      return;
+    }
 
-function simulateFund() {
-  alert("Waiting for confirmation (1 minute)...");
-  setTimeout(() => {
-    balance += 10; // $10 added
-    document.getElementById("balance").innerText = balance;
-    alert("$10 has been added to your balance!");
-  }, 60000); // 60 seconds
-}
+    if (captcha !== "8130") {
+      alert("Captcha is incorrect.");
+      return;
+    }
 
-function processWithdraw() {
-  const acctNum = document.getElementById("acctNum").value;
-  if (acctNum.length !== 10) {
-    alert("Enter a valid 10-digit Nigerian account number");
-    return;
-  }
+    // Save data (for demo only, in real apps this goes to a server)
+    localStorage.setItem("userPhone", phone);
+    localStorage.setItem("userPassword", password);
 
-  const nairaAmount = balance * 1460;
-  document.getElementById("withdrawResult").innerText =
-    `You will receive ₦${nairaAmount.toLocaleString()} in account ${acctNum}`;
-}
+    // Redirect to dashboard
+    window.location.href = "dashboard.html";
+  });
+});
