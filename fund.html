@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DailyGrow - Add Funds</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff8f0;
+      padding: 20px;
+      text-align: center;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: auto;
+    }
+    button {
+      background: #ff6600;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    p.warning {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
 
+<div class="box">
+  <h2>Add Funds</h2>
+  <p class="warning">⚠️ Do NOT send real money!</p>
+  <p>Fake Account Number:</p>
+  <h3>8130 0000 0000</h3>
+  <p>Click below to simulate payment:</p>
+  <button onclick="addFunds()">I have sent it</button>
+  <p id="status"></p>
+</div>
+
+<script>
+  function addFunds() {
+    const btn = document.querySelector("button");
+    btn.disabled = true;
+    document.getElementById("status").innerText = "⏳ Waiting for confirmation...";
+    setTimeout(() => {
+      document.getElementById("status").innerText = "✅ $10 added to your account!";
+    }, 60000); // 60 seconds
+  }
+</script>
+
+</body>
+</html>
