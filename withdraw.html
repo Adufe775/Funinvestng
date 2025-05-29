@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DailyGrow - Withdraw</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fefefe;
+      padding: 20px;
+      text-align: center;
+    }
+    .box {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #ff6600;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+    }
+    .status {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
 
+<div class="box">
+  <h2>Withdraw Funds</h2>
+  <input type="number" id="usd" placeholder="Amount in USD" />
+  <input type="text" id="acct" placeholder="Nigerian Account Number" />
+  <input type="password" id="pass" placeholder="Withdrawal Password" />
+  <button onclick="withdraw()">Withdraw</button>
+  <p class="status" id="status"></p>
+</div>
+
+<script>
+  function withdraw() {
+    let usd = parseFloat(document.getElementById('usd').value);
+    let naira = usd * 1460;
+    if (isNaN(usd) || usd < 20) {
+      document.getElementById("status").innerText = "Minimum withdrawal is $20.";
+      return;
+    }
+    document.getElementById("status").innerText =
+      `Pending... You will receive ₦${naira.toLocaleString()}`;
+    setTimeout(() => {
+      document.getElementById("status").innerText =
+        `✅ Withdrawal of $${usd} successful. ₦${naira.toLocaleString()} sent.`;
+    }, 180000); // 3 minutes
+  }
+</script>
+
+</body>
+</html>
