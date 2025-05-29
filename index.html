@@ -1,46 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DailyGrow - Sign Up</title>
+  <title>DailyGrow Dashboard</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
       padding: 20px;
-      text-align: center;
+      background: #f9f9f9;
+      color: #333;
     }
     .container {
-      max-width: 400px;
-      background: white;
+      max-width: 500px;
       margin: auto;
-      padding: 30px;
+      background: #fff;
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      text-align: center;
     }
-    input, button {
+    h1 {
+      color: #f60;
+    }
+    .balance {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    .menu {
+      margin-top: 30px;
+    }
+    .menu a {
       display: block;
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
+      padding: 12px;
+      background: #f60;
+      color: white;
+      margin-bottom: 10px;
+      text-decoration: none;
+      border-radius: 6px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>DailyGrow - Sign Up</h2>
-    <input type="text" placeholder="Username" id="username" />
-    <input type="email" placeholder="Email" id="email" />
-    <input type="password" placeholder="Password" id="password" />
-    <button onclick="signup()">Sign Up</button>
+    <h1>Welcome to DailyGrow!</h1>
+    <p class="balance">Balance: $0</p>
+    <div class="menu">
+      <a href="add-funds.html">Add Funds</a>
+      <a href="projects.html">View Projects</a>
+      <a href="withdraw.html">Withdraw</a>
+      <a href="notifications.html">Notifications</a>
+      <a href="logout.html">Logout</a>
+    </div>
   </div>
-
-  <script>
-    function signup() {
-      const name = document.getElementById('username').value;
-      alert("Welcome " + name + "! Account created.");
-    }
-  </script>
 </body>
 </html>
