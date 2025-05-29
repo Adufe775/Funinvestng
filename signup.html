@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - DailyGrow</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fffdf9;
+      padding: 20px;
+    }
+    form {
+      max-width: 300px;
+      margin: 100px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    button {
+      background: #ff6600;
+      color: white;
+      border: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Sign Up</h2>
+
+<form onsubmit="signup(event)">
+  <input type="text" id="username" placeholder="Enter username" required />
+  <input type="password" id="password" placeholder="Enter password" required />
+  <button type="submit">Create Account</button>
+</form>
+
+<p style="text-align:center;">Already have an account? <a href="login.html">Login here</a></p>
+
+<script>
+  function signup(e) {
+    e.preventDefault();
+    const user = document.getElementById('username').value;
+    localStorage.setItem("user", user);
+    localStorage.setItem("balance", 0);
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>
